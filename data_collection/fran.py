@@ -52,4 +52,4 @@ def push_data():
 
 
 if __name__ == "__main__":
-    print(pull_data(2010, 2012, "./2010-2012.csv", debug=True))
+    print(pull_data(2000, 2001, "./2001-2002.csv", debug=True))
