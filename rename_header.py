@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def OpenFile(filename):
-    with open(filename,'rb') as f:
+    with open(filename,'rU') as f:
         reader = csv.reader(f)
         data = []
         for row in reader:
@@ -37,8 +37,9 @@ def ChangeHeader(data):
         else:
             continue
 
-def add_sources(data):
-    data = [x + ['RUTGERS'] for x in data]
+def add_sources(data, filename):
+    data = [ ['RUTGERS'] + x for x in data]
+    data = [ [filename] + x for x in data ]
     return data
 
 
@@ -51,5 +52,5 @@ for filename in os.listdir(base_path):
         data = OpenFile(full_filename)
         ChangeHeader(data)
         out_file = base_path + '/out/' + filename
-        data = add_sources(data)
+        data = add_sources(data, filename)
         WriteFile(out_file, data)
