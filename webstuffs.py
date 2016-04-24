@@ -27,10 +27,11 @@ elem_button[0].click()
 # page 2
 
 #select a region
-#elem_region = browser.find_element_by_id("regionID")
-#print elem_region
-#for option in elem_region.find_element_by_tag_name('option'):
-#    print option
+elem_region = browser.find_element_by_id("dataTypeID")
+print "printing elem: " + elem_region.get_attribute('innerHTML')
+for option in elem_region.find_elements_by_tag_name('option'):
+    if option.text == 'RAW Data':
+        option.click()
 
 # All Check Boxes
 
@@ -38,10 +39,9 @@ elem_alldata2 = browser.find_elements_by_css_selector('input[type="checkbox"]')
 for elem in elem_alldata2:
     browser.execute_script("$(arguments[0]).click();", elem)
 
-
-# lat, long, depth
-
 # hit download
+elem_submit = browser.find_element_by_id('download-data')
+elem_submit.click()
 
 
 #elem.send_keys('seleniumhq' + Keys.RETURN)
